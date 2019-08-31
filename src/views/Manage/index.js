@@ -6,14 +6,14 @@ function Manage () {
 
   const [collapsed, setCollapsed] = useState(false);
 
-  function toggle  (){
+  function toggle () {
     setCollapsed(!collapsed);
   }
 
   return (
     <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" />
+      <Sider trigger={null} collapsible collapsed={collapsed} style={{ flex: ' 0 0 256px' }}>
+        <div className="logo">ranck admin</div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1">
             <Icon type="user" />
@@ -29,7 +29,7 @@ function Manage () {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout>
+      <Layout style={{ minHeight: '100vh' }}>
         <Header style={{ background: '#fff', padding: 0 }}>
           <Icon
             className="trigger"
@@ -42,7 +42,6 @@ function Manage () {
             margin: '24px 16px',
             padding: 24,
             background: '#fff',
-            minHeight: 280,
           }}
         >
           Content
