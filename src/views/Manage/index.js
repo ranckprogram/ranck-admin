@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { renderRoutes } from 'react-router-config';
+import routesConfig from '../../router/config';
 import { Layout, Menu, Icon } from 'antd';
 const { Header, Sider, Content } = Layout;
 
@@ -44,8 +46,8 @@ function Manage () {
             background: '#fff',
           }}
         >
-          Content
-      </Content>
+          {renderRoutes(routesConfig[2].routes)}
+        </Content>
       </Layout>
     </Layout>
   );
