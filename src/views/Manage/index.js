@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import routesConfig from '../../router/config';
+import { menuConfig } from '../../router/config';
 import { Layout, Menu, Icon } from 'antd';
 const { Header, Sider, Content } = Layout;
 
-function Manage () {
+function Manage (props) {
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -16,19 +17,16 @@ function Manage () {
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed} style={{ flex: ' 0 0 256px' }}>
         <div className="logo">ranck admin</div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1">
-            <Icon type="user" />
-            <span>nav 1</span>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Icon type="video-camera" />
-            <span>nav 2</span>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <Icon type="upload" />
-            <span>nav 3</span>
-          </Menu.Item>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={[props.location.pathname]}>
+          {
+            menuConfig.map(menu =>
+              <Menu.Item key={menu.path}>
+                <Link to={menu.path}>
+                  <Icon type={menu.icon} />
+                  <span>{menu.title}</span>
+                </Link>
+              </Menu.Item>)
+          }
         </Menu>
       </Sider>
       <Layout style={{ minHeight: '100vh' }}>
@@ -46,7 +44,7 @@ function Manage () {
             background: '#fff',
           }}
         >
-          {renderRoutes(routesConfig[2].routes)}
+          {renderRoutes(menuConfig)}
         </Content>
       </Layout>
     </Layout>

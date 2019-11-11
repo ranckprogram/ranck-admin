@@ -9,6 +9,7 @@ function Router () {
       <Switch>
         {config.map(item =>
           <Route
+            key={item.path}
             exact={item.exact}
             path={item.path}
             component={item.component} />
