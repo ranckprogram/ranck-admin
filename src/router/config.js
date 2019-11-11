@@ -3,6 +3,7 @@ import Manage from '../views/Manage';
 import User from '../views/User';
 import Detail from '../views/User/detail';
 import List from '../views/List';
+import Dashboard from '../views/Dashboard';
 
 const menuConfig = [
   {
@@ -16,7 +17,7 @@ const menuConfig = [
     }]
   }, {
     path: '/manage/dashboard',
-    component: User,
+    component: Dashboard,
     title: '统计模块',
     icon: 'dashboard',
   }, {
