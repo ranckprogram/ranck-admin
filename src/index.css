@@ -21,3 +21,9 @@ code {
   font-size: 24px;
   font-weight: bold;
 }
+
+.trigger {
+  font-size: 18px;
+  margin-left: 20px;
+  margin-top: 10px;
+}

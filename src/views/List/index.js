@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table, Alert } from 'antd';
 
 function List () {
   const dataSource = [
@@ -41,9 +41,24 @@ function List () {
     columns,
   }
 
+  function message () {
+    return (
+      <>
+        总共<span>10</span>条
+      </>
+    )
+  }
+
   return (
     <div>
-      <Table {...tableProps}/>
+      <Alert
+        style={{marginBottom: '20px'}}
+        message={
+          message()
+        }
+        type="info" showIcon />
+
+      <Table {...tableProps} />
     </div>
   )
 }
