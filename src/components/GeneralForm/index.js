@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Row, Col } from 'antd';
+import { Form, Row, Col, Button } from 'antd';
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -30,6 +30,40 @@ function GeneralForm (props) {
 export default GeneralForm
 
 
-function SearchForm () {
+export const SearchForm = Form.create()((props) => {
+  const {
+    formItems,
+    form,
+    onSearch,
+    onReset
+  } = props
+  const formProps = {
+    form,
+    formItems,
+    span: 8,
+  }
 
-}
+  function handleReset () {
+    form.resetFields()
+    typeof onReset === 'function' && onReset()
+  }
+
+  function handleSearch () {
+    form.validateFields((err, values) => {
+      if (!err) {
+        console.log(values)
+        typeof onSearch === 'function' && onSearch(values)
+      }
+    });
+  }
+
+  return <Row>
+    <GeneralForm {...formProps} />
+    <Col span={8}>
+      <Button onClick={handleReset}>重置</Button>
+      <Button onClick={handleSearch} style={{ marginLeft: '20px' }} type="primary">查找</Button>
+    </Col>
+  </Row>
+})
+
+

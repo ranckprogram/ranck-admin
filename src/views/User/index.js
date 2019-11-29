@@ -1,6 +1,6 @@
 import React from 'react';
-import GeneralForm from '@/components/GeneralForm'
-import { Form, Input, Button } from 'antd';
+import GeneralForm, { SearchForm, } from '@/components/GeneralForm'
+import { Form, Input, Button, Select } from 'antd';
 
 const formItemLayout = {
   labelCol: {
@@ -49,8 +49,22 @@ const formItems = [{
 }]
 
 
+const serachConfig = [{
+  id: 'username',
+  label: '用户名',
+  component: <Input />
+}, {
+  id: 'state',
+  label: '状态',
+  component: <Select >
+    <Select.Option value="1">运行中</Select.Option>
+    <Select.Option value="0">失败</Select.Option>
+  </Select>
+}]
+
 function User (props) {
   const { form } = props
+
 
   function handleSubmit (e) {
     e.preventDefault()
@@ -65,6 +79,8 @@ function User (props) {
     <div>
       User
       <Form onSubmit={handleSubmit} {...formItemLayout}>
+        <SearchForm formItems={serachConfig} />
+
         <GeneralForm form={form} formItems={formItems}>
         </GeneralForm>
         <Form.Item wrapperCol={wrapperCol}>
