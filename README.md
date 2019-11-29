@@ -25,7 +25,7 @@ react admin是一个技术总结项目，将我在实际项目中遇到过的情
 
 ### 组件列表
 
-- GeneralForm
+- [GeneralForm](/src/components/GeneralForm/GeneralForm.md)
 - SearchForm
 - StandardTable
 - 
